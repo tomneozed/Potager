@@ -1,0 +1,130 @@
+﻿@model Potager.Models.Sujet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sujet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.plante_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plante_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zone_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zone_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_semis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_semis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_plantation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_plantation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_debut_floraison)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_debut_floraison)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_mort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_mort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poids_recolte_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poids_recolte_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maladie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maladie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Graine.graine_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graine.graine_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plante.nom_commun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plante.nom_commun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recolte.recolte_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recolte.recolte_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet_Entretien.action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet_Entretien.action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone.nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.sujet_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

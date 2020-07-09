@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Potager.Models.Sujet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.plante_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zone_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_semis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_plantation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_debut_floraison)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_mort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.poids_recolte_total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.maladie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Graine.graine_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plante.nom_commun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recolte.recolte_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sujet_Entretien.action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zone.nom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.plante_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.zone_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_semis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_plantation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_debut_floraison)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_mort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poids_recolte_total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.maladie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Graine.graine_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plante.nom_commun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recolte.recolte_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sujet_Entretien.action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zone.nom)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.sujet_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sujet_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sujet_id })
+        </td>
+    </tr>
+}
+
+</table>

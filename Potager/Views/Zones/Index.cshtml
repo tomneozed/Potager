@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Potager.Models.Zone>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_creation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.composition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exposition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paillage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emplacement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.structures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zone_Modification.modification)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_creation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.composition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exposition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paillage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emplacement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.structures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sujet.maladie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zone_Modification.modification)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.zone_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.zone_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.zone_id })
+        </td>
+    </tr>
+}
+
+</table>

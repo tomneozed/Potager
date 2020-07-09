@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Potager.Models.Faune>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.embranchement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.classe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ordre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sous_ordre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.famille)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sous_famille)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tribu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_commun)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.embranchement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.classe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ordre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sous_ordre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.famille)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sous_famille)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tribu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_commun)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.faune_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.faune_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.faune_id })
+        </td>
+    </tr>
+}
+
+</table>

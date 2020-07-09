@@ -4,29 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ec0d27bd5dbe41d8acf55a9e5ba84c39" Name="Diagram1">
-        <EntityTypeShape EntityType="PotagerModel.Faune" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Faune_Dans_Potager" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Faune_Interaction_Sujet" Width="1.5" PointX="2.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Flore_Dans_Potager" Width="1.5" PointX="10.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Flore_Interaction_Sujet" Width="1.5" PointX="2.75" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Graine" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Meteo" Width="1.5" PointX="11" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Plante" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Potager" Width="1.5" PointX="8.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Recolte" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Sujet" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Sujet_Entretien" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Zone" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PotagerModel.Zone_Modification" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
-        <AssociationConnector Association="PotagerModel.FK_graine_Plante" ManuallyRouted="false" />
-        <AssociationConnector Association="PotagerModel.FK_Graine_Sujet" ManuallyRouted="false" />
-        <AssociationConnector Association="PotagerModel.FK_Meteo_Potager" ManuallyRouted="false" />
-        <AssociationConnector Association="PotagerModel.FK_Sujet_Plante" ManuallyRouted="false" />
-        <AssociationConnector Association="PotagerModel.FK_Recolte_Sujet" ManuallyRouted="false" />
-        <AssociationConnector Association="PotagerModel.FK_Sujet_Entretien_Sujet" ManuallyRouted="false" />
-        <AssociationConnector Association="PotagerModel.FK_Sujet_Zone" ManuallyRouted="false" />
-        <AssociationConnector Association="PotagerModel.FK_Zone_Modification_Zone" ManuallyRouted="false" />
+      <Diagram DiagramId="1ccfe1cbc77b469cb98df3e3fedd752c" Name="Diagram1">
+        <EntityTypeShape EntityType="PotagerDBModel.Faune" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Faune_Dans_Potager" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Faune_Interaction_Sujet" Width="1.5" PointX="2.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Flore_Dans_Potager" Width="1.5" PointX="10.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Flore_Interaction_Sujet" Width="1.5" PointX="2.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Graine" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Plante" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Recolte" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Sujet" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Sujet_Entretien" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Zone" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotagerDBModel.Zone_Modification" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="PotagerDBModel.FK_graine_Plante" ManuallyRouted="false" />
+        <AssociationConnector Association="PotagerDBModel.FK_Graine_Sujet" ManuallyRouted="false" />
+        <AssociationConnector Association="PotagerDBModel.FK_Sujet_Plante" ManuallyRouted="false" />
+        <AssociationConnector Association="PotagerDBModel.FK_Recolte_Sujet" ManuallyRouted="false" />
+        <AssociationConnector Association="PotagerDBModel.FK_Sujet_Entretien_Sujet" ManuallyRouted="false" />
+        <AssociationConnector Association="PotagerDBModel.FK_Sujet_Zone" ManuallyRouted="false" />
+        <AssociationConnector Association="PotagerDBModel.FK_Zone_Modification_Zone" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PotagerDBModel.Terrain" Width="1.5" PointX="8.75" PointY="10.625" />
+        <EntityTypeShape EntityType="PotagerDBModel.Meteo" Width="1.5" PointX="11" PointY="10.375" />
+        <AssociationConnector Association="PotagerDBModel.FK_Meteo_Terrain" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

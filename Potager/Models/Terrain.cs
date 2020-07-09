@@ -12,9 +12,9 @@ namespace Potager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Potager
+    public partial class Terrain
     {
-        public int potager_id { get; set; }
+        public int terrain_id { get; set; }
         public string ville { get; set; }
         public string type_sol { get; set; }
         public string structures { get; set; }

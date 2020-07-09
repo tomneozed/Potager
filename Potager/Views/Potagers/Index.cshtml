@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Potager.Models.Potager>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type_sol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.structures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Meteo.meteo_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ville)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type_sol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.structures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Meteo.meteo_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.potager_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.potager_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.potager_id })
+        </td>
+    </tr>
+}
+
+</table>

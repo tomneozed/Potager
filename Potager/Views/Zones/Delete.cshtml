@@ -1,0 +1,112 @@
+﻿@model Potager.Models.Zone
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Zone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_creation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_creation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.composition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.composition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.exposition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.exposition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paillage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paillage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emplacement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emplacement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.structures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.structures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet.maladie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone_Modification.modification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone_Modification.modification)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

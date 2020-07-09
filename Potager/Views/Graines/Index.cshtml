@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Potager.Models.Graine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.plante_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parent_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.poids)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plante.nom_commun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.plante_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parent_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poids)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plante.nom_commun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sujet.maladie)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.graine_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.graine_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.graine_id })
+        </td>
+    </tr>
+}
+
+</table>

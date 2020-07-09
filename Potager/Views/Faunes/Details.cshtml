@@ -1,0 +1,90 @@
+﻿@model Potager.Models.Faune
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Faune</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.embranchement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.embranchement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.classe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ordre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ordre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sous_ordre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sous_ordre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.famille)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.famille)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sous_famille)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sous_famille)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tribu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tribu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_commun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_commun)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.faune_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

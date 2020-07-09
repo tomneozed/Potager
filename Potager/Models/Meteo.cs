@@ -15,13 +15,13 @@ namespace Potager.Models
     public partial class Meteo
     {
         public int meteo_id { get; set; }
-        public int potager_id { get; set; }
+        public int terrain_id { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<float> temperature { get; set; }
         public Nullable<float> pluviometrie { get; set; }
         public Nullable<float> vent { get; set; }
         public Nullable<float> humidite { get; set; }
     
-        public virtual Potager Potager { get; set; }
+        public virtual Terrain Terrain { get; set; }
     }
 }

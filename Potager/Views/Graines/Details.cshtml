@@ -1,0 +1,66 @@
+﻿@model Potager.Models.Graine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Graine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.plante_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plante_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parent_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parent_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poids)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poids)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plante.nom_commun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plante.nom_commun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet.maladie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.graine_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

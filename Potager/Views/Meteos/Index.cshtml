@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Potager.Models.Meteo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.potager_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pluviometrie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.humidite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.terrain_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Terrain.ville)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.potager_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.temperature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pluviometrie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.humidite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.terrain_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Terrain.ville)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.meteo_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.meteo_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.meteo_id })
+        </td>
+    </tr>
+}
+
+</table>

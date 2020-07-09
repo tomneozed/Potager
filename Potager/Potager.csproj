@@ -162,20 +162,76 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\FaunesController.cs" />
+    <Compile Include="Controllers\GrainesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeteosController.cs" />
+    <Compile Include="Controllers\PlantesController.cs" />
+    <Compile Include="Controllers\RecoltesController.cs" />
+    <Compile Include="Controllers\SujetsController.cs" />
+    <Compile Include="Controllers\TerrainsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ZonesController.cs" />
+    <Compile Include="Controllers\Zone_ModificationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Faune.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Faune_Dans_Potager.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Faune_Interaction_Sujet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flore_Dans_Potager.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flore_Interaction_Sujet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Graine.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Meteo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Plante.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Recolte.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sujet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sujet_Entretien.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Terrain.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zone.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zone_Modification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -190,7 +246,13 @@
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -217,9 +279,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Model1.edmx.diagram">
+    <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -240,9 +302,60 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Faunes\Create.cshtml" />
+    <Content Include="Views\Faunes\Delete.cshtml" />
+    <Content Include="Views\Faunes\Details.cshtml" />
+    <Content Include="Views\Faunes\Edit.cshtml" />
+    <Content Include="Views\Faunes\Index.cshtml" />
+    <Content Include="Views\Zones\Create.cshtml" />
+    <Content Include="Views\Zones\Delete.cshtml" />
+    <Content Include="Views\Zones\Details.cshtml" />
+    <Content Include="Views\Zones\Edit.cshtml" />
+    <Content Include="Views\Zones\Index.cshtml" />
+    <Content Include="Views\Graines\Create.cshtml" />
+    <Content Include="Views\Graines\Delete.cshtml" />
+    <Content Include="Views\Graines\Details.cshtml" />
+    <Content Include="Views\Graines\Edit.cshtml" />
+    <Content Include="Views\Graines\Index.cshtml" />
+    <Content Include="Views\Meteos\Create.cshtml" />
+    <Content Include="Views\Meteos\Delete.cshtml" />
+    <Content Include="Views\Meteos\Details.cshtml" />
+    <Content Include="Views\Meteos\Edit.cshtml" />
+    <Content Include="Views\Meteos\Index.cshtml" />
+    <Content Include="Views\Plantes\Create.cshtml" />
+    <Content Include="Views\Plantes\Delete.cshtml" />
+    <Content Include="Views\Plantes\Details.cshtml" />
+    <Content Include="Views\Plantes\Edit.cshtml" />
+    <Content Include="Views\Plantes\Index.cshtml" />
+    <Content Include="Views\Potagers\Create.cshtml" />
+    <Content Include="Views\Potagers\Delete.cshtml" />
+    <Content Include="Views\Potagers\Details.cshtml" />
+    <Content Include="Views\Potagers\Edit.cshtml" />
+    <Content Include="Views\Potagers\Index.cshtml" />
+    <Content Include="Views\Recoltes\Create.cshtml" />
+    <Content Include="Views\Recoltes\Delete.cshtml" />
+    <Content Include="Views\Recoltes\Details.cshtml" />
+    <Content Include="Views\Recoltes\Edit.cshtml" />
+    <Content Include="Views\Recoltes\Index.cshtml" />
+    <Content Include="Views\Sujets\Create.cshtml" />
+    <Content Include="Views\Sujets\Delete.cshtml" />
+    <Content Include="Views\Sujets\Details.cshtml" />
+    <Content Include="Views\Sujets\Edit.cshtml" />
+    <Content Include="Views\Sujets\Index.cshtml" />
+    <Content Include="Views\Terrains\Create.cshtml" />
+    <Content Include="Views\Terrains\Delete.cshtml" />
+    <Content Include="Views\Terrains\Details.cshtml" />
+    <Content Include="Views\Terrains\Edit.cshtml" />
+    <Content Include="Views\Terrains\Index.cshtml" />
+    <Content Include="Views\Zone_Modification\Create.cshtml" />
+    <Content Include="Views\Zone_Modification\Delete.cshtml" />
+    <Content Include="Views\Zone_Modification\Details.cshtml" />
+    <Content Include="Views\Zone_Modification\Edit.cshtml" />
+    <Content Include="Views\Zone_Modification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Values\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

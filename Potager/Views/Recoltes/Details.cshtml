@@ -1,0 +1,50 @@
+﻿@model Potager.Models.Recolte
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recolte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sujet_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sujet_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poids)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poids)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet.maladie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.recolte_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

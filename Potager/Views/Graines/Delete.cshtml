@@ -1,0 +1,72 @@
+﻿@model Potager.Models.Graine
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Graine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.plante_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plante_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parent_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parent_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poids)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poids)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plante.nom_commun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plante.nom_commun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet.maladie)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

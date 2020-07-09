@@ -13,10 +13,10 @@ namespace Potager.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PotagerEntities : DbContext
+    public partial class PotagerDBEntities : DbContext
     {
-        public PotagerEntities()
-            : base("name=PotagerEntities")
+        public PotagerDBEntities()
+            : base("name=PotagerDBEntities")
         {
         }
     
@@ -31,13 +31,13 @@ namespace Potager.Models
         public virtual DbSet<Flore_Dans_Potager> Flore_Dans_Potager { get; set; }
         public virtual DbSet<Flore_Interaction_Sujet> Flore_Interaction_Sujet { get; set; }
         public virtual DbSet<Graine> Graine { get; set; }
-        public virtual DbSet<Meteo> Meteo { get; set; }
         public virtual DbSet<Plante> Plante { get; set; }
-        public virtual DbSet<Potager> Potager { get; set; }
         public virtual DbSet<Recolte> Recolte { get; set; }
         public virtual DbSet<Sujet> Sujet { get; set; }
         public virtual DbSet<Sujet_Entretien> Sujet_Entretien { get; set; }
         public virtual DbSet<Zone> Zone { get; set; }
         public virtual DbSet<Zone_Modification> Zone_Modification { get; set; }
+        public virtual DbSet<Terrain> Terrain { get; set; }
+        public virtual DbSet<Meteo> Meteo { get; set; }
     }
 }

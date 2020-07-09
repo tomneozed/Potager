@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Potager.Models.Recolte>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sujet_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.poids)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sujet_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poids)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sujet.maladie)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.recolte_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.recolte_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.recolte_id })
+        </td>
+    </tr>
+}
+
+</table>

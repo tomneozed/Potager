@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PotagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PotagerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Faune">
           <Key>
             <PropertyRef Name="faune_id" />
@@ -67,7 +67,7 @@
             <PropertyRef Name="meteo_id" />
           </Key>
           <Property Name="meteo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="potager_id" Type="int" Nullable="false" />
+          <Property Name="terrain_id" Type="int" Nullable="false" />
           <Property Name="date" Type="date" />
           <Property Name="temperature" Type="real" />
           <Property Name="pluviometrie" Type="real" />
@@ -90,15 +90,6 @@
           <Property Name="genre" Type="varchar" MaxLength="50" />
           <Property Name="espece" Type="varchar" MaxLength="50" />
           <Property Name="variete" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Potager">
-          <Key>
-            <PropertyRef Name="potager_id" />
-          </Key>
-          <Property Name="potager_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ville" Type="varchar" MaxLength="50" />
-          <Property Name="type_sol" Type="varchar" MaxLength="50" />
-          <Property Name="structures" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Recolte">
           <Key>
@@ -132,6 +123,15 @@
           <Property Name="sujet_id" Type="int" />
           <Property Name="date" Type="date" />
           <Property Name="action" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Terrain">
+          <Key>
+            <PropertyRef Name="terrain_id" />
+          </Key>
+          <Property Name="terrain_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ville" Type="varchar" MaxLength="50" />
+          <Property Name="type_sol" Type="varchar" MaxLength="50" />
+          <Property Name="structures" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Zone">
           <Key>
@@ -181,12 +181,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Meteo_Potager">
-          <End Role="Potager" Type="Self.Potager" Multiplicity="1" />
+        <Association Name="FK_Meteo_Terrain">
+          <End Role="Terrain" Type="Self.Terrain" Multiplicity="1" />
           <End Role="Meteo" Type="Self.Meteo" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Potager">
-              <PropertyRef Name="potager_id" />
+            <Principal Role="Terrain">
+              <PropertyRef Name="terrain_id" />
             </Principal>
             <Dependent Role="Meteo">
               <PropertyRef Name="meteo_id" />
@@ -253,7 +253,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PotagerModelStoreContainer">
+        <EntityContainer Name="PotagerDBModelStoreContainer">
           <EntitySet Name="Faune" EntityType="Self.Faune" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faune_Dans_Potager" EntityType="Self.Faune_Dans_Potager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faune_Interaction_Sujet" EntityType="Self.Faune_Interaction_Sujet" Schema="dbo" store:Type="Tables" />
@@ -262,10 +262,10 @@
           <EntitySet Name="Graine" EntityType="Self.Graine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Meteo" EntityType="Self.Meteo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plante" EntityType="Self.Plante" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Potager" EntityType="Self.Potager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recolte" EntityType="Self.Recolte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sujet" EntityType="Self.Sujet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sujet_Entretien" EntityType="Self.Sujet_Entretien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Terrain" EntityType="Self.Terrain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zone" EntityType="Self.Zone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zone_Modification" EntityType="Self.Zone_Modification" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_graine_Plante" Association="Self.FK_graine_Plante">
@@ -276,8 +276,8 @@
             <End Role="Sujet" EntitySet="Sujet" />
             <End Role="Graine" EntitySet="Graine" />
           </AssociationSet>
-          <AssociationSet Name="FK_Meteo_Potager" Association="Self.FK_Meteo_Potager">
-            <End Role="Potager" EntitySet="Potager" />
+          <AssociationSet Name="FK_Meteo_Terrain" Association="Self.FK_Meteo_Terrain">
+            <End Role="Terrain" EntitySet="Terrain" />
             <End Role="Meteo" EntitySet="Meteo" />
           </AssociationSet>
           <AssociationSet Name="FK_Recolte_Sujet" Association="Self.FK_Recolte_Sujet">
@@ -301,11 +301,10 @@
             <End Role="Zone_Modification" EntitySet="Zone_Modification" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PotagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PotagerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Faune">
           <Key>
             <PropertyRef Name="faune_id" />
@@ -365,19 +364,6 @@
           <NavigationProperty Name="Plante" Relationship="Self.FK_graine_Plante" FromRole="Graine" ToRole="Plante" />
           <NavigationProperty Name="Sujet" Relationship="Self.FK_Graine_Sujet" FromRole="Graine" ToRole="Sujet" />
         </EntityType>
-        <EntityType Name="Meteo">
-          <Key>
-            <PropertyRef Name="meteo_id" />
-          </Key>
-          <Property Name="meteo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="potager_id" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
-          <Property Name="temperature" Type="Single" />
-          <Property Name="pluviometrie" Type="Single" />
-          <Property Name="vent" Type="Single" />
-          <Property Name="humidite" Type="Single" />
-          <NavigationProperty Name="Potager" Relationship="Self.FK_Meteo_Potager" FromRole="Meteo" ToRole="Potager" />
-        </EntityType>
         <EntityType Name="Plante">
           <Key>
             <PropertyRef Name="plante_id" />
@@ -396,16 +382,6 @@
           <Property Name="variete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Graine" Relationship="Self.FK_graine_Plante" FromRole="Plante" ToRole="Graine" />
           <NavigationProperty Name="Sujet" Relationship="Self.FK_Sujet_Plante" FromRole="Plante" ToRole="Sujet" />
-        </EntityType>
-        <EntityType Name="Potager">
-          <Key>
-            <PropertyRef Name="potager_id" />
-          </Key>
-          <Property Name="potager_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="type_sol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="structures" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Meteo" Relationship="Self.FK_Meteo_Potager" FromRole="Potager" ToRole="Meteo" />
         </EntityType>
         <EntityType Name="Recolte">
           <Key>
@@ -498,18 +474,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Meteo_Potager">
-          <End Role="Potager" Type="Self.Potager" Multiplicity="1" />
-          <End Role="Meteo" Type="Self.Meteo" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Potager">
-              <PropertyRef Name="potager_id" />
-            </Principal>
-            <Dependent Role="Meteo">
-              <PropertyRef Name="meteo_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Sujet_Plante">
           <End Role="Plante" Type="Self.Plante" Multiplicity="1" />
           <End Role="Sujet" Type="Self.Sujet" Multiplicity="0..1" />
@@ -570,16 +534,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PotagerEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PotagerDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Faune" EntityType="Self.Faune" />
           <EntitySet Name="Faune_Dans_Potager" EntityType="Self.Faune_Dans_Potager" />
           <EntitySet Name="Faune_Interaction_Sujet" EntityType="Self.Faune_Interaction_Sujet" />
           <EntitySet Name="Flore_Dans_Potager" EntityType="Self.Flore_Dans_Potager" />
           <EntitySet Name="Flore_Interaction_Sujet" EntityType="Self.Flore_Interaction_Sujet" />
           <EntitySet Name="Graine" EntityType="Self.Graine" />
-          <EntitySet Name="Meteo" EntityType="Self.Meteo" />
           <EntitySet Name="Plante" EntityType="Self.Plante" />
-          <EntitySet Name="Potager" EntityType="Self.Potager" />
           <EntitySet Name="Recolte" EntityType="Self.Recolte" />
           <EntitySet Name="Sujet" EntityType="Self.Sujet" />
           <EntitySet Name="Sujet_Entretien" EntityType="Self.Sujet_Entretien" />
@@ -592,10 +554,6 @@
           <AssociationSet Name="FK_Graine_Sujet" Association="Self.FK_Graine_Sujet">
             <End Role="Sujet" EntitySet="Sujet" />
             <End Role="Graine" EntitySet="Graine" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Meteo_Potager" Association="Self.FK_Meteo_Potager">
-            <End Role="Potager" EntitySet="Potager" />
-            <End Role="Meteo" EntitySet="Meteo" />
           </AssociationSet>
           <AssociationSet Name="FK_Sujet_Plante" Association="Self.FK_Sujet_Plante">
             <End Role="Plante" EntitySet="Plante" />
@@ -617,15 +575,56 @@
             <End Role="Zone" EntitySet="Zone" />
             <End Role="Zone_Modification" EntitySet="Zone_Modification" />
           </AssociationSet>
+          <EntitySet Name="Terrain" EntityType="PotagerDBModel.Terrain" />
+          <EntitySet Name="Meteo" EntityType="PotagerDBModel.Meteo" />
+          <AssociationSet Name="FK_Meteo_Terrain" Association="PotagerDBModel.FK_Meteo_Terrain">
+            <End Role="Terrain" EntitySet="Terrain" />
+            <End Role="Meteo" EntitySet="Meteo" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Terrain">
+          <Key>
+            <PropertyRef Name="terrain_id" />
+          </Key>
+          <Property Name="terrain_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type_sol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="structures" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Meteo" Relationship="PotagerDBModel.FK_Meteo_Terrain" FromRole="Terrain" ToRole="Meteo" />
+        </EntityType>
+        <EntityType Name="Meteo">
+          <Key>
+            <PropertyRef Name="meteo_id" />
+          </Key>
+          <Property Name="meteo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="terrain_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="temperature" Type="Single" />
+          <Property Name="pluviometrie" Type="Single" />
+          <Property Name="vent" Type="Single" />
+          <Property Name="humidite" Type="Single" />
+          <NavigationProperty Name="Terrain" Relationship="PotagerDBModel.FK_Meteo_Terrain" FromRole="Meteo" ToRole="Terrain" />
+        </EntityType>
+        <Association Name="FK_Meteo_Terrain">
+          <End Type="PotagerDBModel.Terrain" Role="Terrain" Multiplicity="1" />
+          <End Type="PotagerDBModel.Meteo" Role="Meteo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Terrain">
+              <PropertyRef Name="terrain_id" />
+            </Principal>
+            <Dependent Role="Meteo">
+              <PropertyRef Name="meteo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PotagerModelStoreContainer" CdmEntityContainer="PotagerEntities">
+        <EntityContainerMapping StorageEntityContainer="PotagerDBModelStoreContainer" CdmEntityContainer="PotagerDBEntities">
           <EntitySetMapping Name="Faune">
-            <EntityTypeMapping TypeName="PotagerModel.Faune">
+            <EntityTypeMapping TypeName="PotagerDBModel.Faune">
               <MappingFragment StoreEntitySet="Faune">
                 <ScalarProperty Name="faune_id" ColumnName="faune_id" />
                 <ScalarProperty Name="embranchement" ColumnName="embranchement" />
@@ -641,7 +640,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Faune_Dans_Potager">
-            <EntityTypeMapping TypeName="PotagerModel.Faune_Dans_Potager">
+            <EntityTypeMapping TypeName="PotagerDBModel.Faune_Dans_Potager">
               <MappingFragment StoreEntitySet="Faune_Dans_Potager">
                 <ScalarProperty Name="faune_id" ColumnName="faune_id" />
                 <ScalarProperty Name="potager_id" ColumnName="potager_id" />
@@ -649,7 +648,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Faune_Interaction_Sujet">
-            <EntityTypeMapping TypeName="PotagerModel.Faune_Interaction_Sujet">
+            <EntityTypeMapping TypeName="PotagerDBModel.Faune_Interaction_Sujet">
               <MappingFragment StoreEntitySet="Faune_Interaction_Sujet">
                 <ScalarProperty Name="sujet_id" ColumnName="sujet_id" />
                 <ScalarProperty Name="faune_id" ColumnName="faune_id" />
@@ -657,7 +656,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Flore_Dans_Potager">
-            <EntityTypeMapping TypeName="PotagerModel.Flore_Dans_Potager">
+            <EntityTypeMapping TypeName="PotagerDBModel.Flore_Dans_Potager">
               <MappingFragment StoreEntitySet="Flore_Dans_Potager">
                 <ScalarProperty Name="plante_id" ColumnName="plante_id" />
                 <ScalarProperty Name="potager_id" ColumnName="potager_id" />
@@ -665,7 +664,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Flore_Interaction_Sujet">
-            <EntityTypeMapping TypeName="PotagerModel.Flore_Interaction_Sujet">
+            <EntityTypeMapping TypeName="PotagerDBModel.Flore_Interaction_Sujet">
               <MappingFragment StoreEntitySet="Flore_Interaction_Sujet">
                 <ScalarProperty Name="plante_id" ColumnName="plante_id" />
                 <ScalarProperty Name="sujet_id" ColumnName="sujet_id" />
@@ -673,7 +672,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Graine">
-            <EntityTypeMapping TypeName="PotagerModel.Graine">
+            <EntityTypeMapping TypeName="PotagerDBModel.Graine">
               <MappingFragment StoreEntitySet="Graine">
                 <ScalarProperty Name="graine_id" ColumnName="graine_id" />
                 <ScalarProperty Name="plante_id" ColumnName="plante_id" />
@@ -683,21 +682,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Meteo">
-            <EntityTypeMapping TypeName="PotagerModel.Meteo">
-              <MappingFragment StoreEntitySet="Meteo">
-                <ScalarProperty Name="meteo_id" ColumnName="meteo_id" />
-                <ScalarProperty Name="potager_id" ColumnName="potager_id" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="temperature" ColumnName="temperature" />
-                <ScalarProperty Name="pluviometrie" ColumnName="pluviometrie" />
-                <ScalarProperty Name="vent" ColumnName="vent" />
-                <ScalarProperty Name="humidite" ColumnName="humidite" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Plante">
-            <EntityTypeMapping TypeName="PotagerModel.Plante">
+            <EntityTypeMapping TypeName="PotagerDBModel.Plante">
               <MappingFragment StoreEntitySet="Plante">
                 <ScalarProperty Name="plante_id" ColumnName="plante_id" />
                 <ScalarProperty Name="nom_commun" ColumnName="nom_commun" />
@@ -714,18 +700,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Potager">
-            <EntityTypeMapping TypeName="PotagerModel.Potager">
-              <MappingFragment StoreEntitySet="Potager">
-                <ScalarProperty Name="potager_id" ColumnName="potager_id" />
-                <ScalarProperty Name="ville" ColumnName="ville" />
-                <ScalarProperty Name="type_sol" ColumnName="type_sol" />
-                <ScalarProperty Name="structures" ColumnName="structures" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Recolte">
-            <EntityTypeMapping TypeName="PotagerModel.Recolte">
+            <EntityTypeMapping TypeName="PotagerDBModel.Recolte">
               <MappingFragment StoreEntitySet="Recolte">
                 <ScalarProperty Name="recolte_id" ColumnName="recolte_id" />
                 <ScalarProperty Name="sujet_id" ColumnName="sujet_id" />
@@ -735,7 +711,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sujet">
-            <EntityTypeMapping TypeName="PotagerModel.Sujet">
+            <EntityTypeMapping TypeName="PotagerDBModel.Sujet">
               <MappingFragment StoreEntitySet="Sujet">
                 <ScalarProperty Name="sujet_id" ColumnName="sujet_id" />
                 <ScalarProperty Name="plante_id" ColumnName="plante_id" />
@@ -751,7 +727,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sujet_Entretien">
-            <EntityTypeMapping TypeName="PotagerModel.Sujet_Entretien">
+            <EntityTypeMapping TypeName="PotagerDBModel.Sujet_Entretien">
               <MappingFragment StoreEntitySet="Sujet_Entretien">
                 <ScalarProperty Name="entretien_id" ColumnName="entretien_id" />
                 <ScalarProperty Name="sujet_id" ColumnName="sujet_id" />
@@ -761,7 +737,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zone">
-            <EntityTypeMapping TypeName="PotagerModel.Zone">
+            <EntityTypeMapping TypeName="PotagerDBModel.Zone">
               <MappingFragment StoreEntitySet="Zone">
                 <ScalarProperty Name="zone_id" ColumnName="zone_id" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
@@ -777,12 +753,35 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zone_Modification">
-            <EntityTypeMapping TypeName="PotagerModel.Zone_Modification">
+            <EntityTypeMapping TypeName="PotagerDBModel.Zone_Modification">
               <MappingFragment StoreEntitySet="Zone_Modification">
                 <ScalarProperty Name="zone_modification_id" ColumnName="zone_modification_id" />
                 <ScalarProperty Name="zone_id" ColumnName="zone_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="modification" ColumnName="modification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Terrain">
+            <EntityTypeMapping TypeName="PotagerDBModel.Terrain">
+              <MappingFragment StoreEntitySet="Terrain">
+                <ScalarProperty Name="structures" ColumnName="structures" />
+                <ScalarProperty Name="type_sol" ColumnName="type_sol" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="terrain_id" ColumnName="terrain_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meteo">
+            <EntityTypeMapping TypeName="PotagerDBModel.Meteo">
+              <MappingFragment StoreEntitySet="Meteo">
+                <ScalarProperty Name="humidite" ColumnName="humidite" />
+                <ScalarProperty Name="vent" ColumnName="vent" />
+                <ScalarProperty Name="pluviometrie" ColumnName="pluviometrie" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="terrain_id" ColumnName="terrain_id" />
+                <ScalarProperty Name="meteo_id" ColumnName="meteo_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

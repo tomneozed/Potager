@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Potager.Models.Plante>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_commun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.regne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sous_regne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.division)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.classe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sous_classe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ordre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.famille)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.espece)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.variete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Graine.graine_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_commun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.regne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sous_regne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.division)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.classe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sous_classe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ordre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.famille)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.espece)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.variete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Graine.graine_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sujet.maladie)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.plante_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.plante_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.plante_id })
+        </td>
+    </tr>
+}
+
+</table>

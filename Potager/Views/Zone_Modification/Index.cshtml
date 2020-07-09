@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Potager.Models.Zone_Modification>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.zone_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zone.nom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.zone_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zone.nom)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.zone_modification_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.zone_modification_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.zone_modification_id })
+        </td>
+    </tr>
+}
+
+</table>

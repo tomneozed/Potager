@@ -1,0 +1,106 @@
+﻿@model Potager.Models.Zone
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Zone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_creation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_creation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.composition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.composition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.exposition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.exposition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paillage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paillage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emplacement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emplacement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.structures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.structures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet.maladie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet.maladie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone_Modification.modification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone_Modification.modification)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.zone_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
